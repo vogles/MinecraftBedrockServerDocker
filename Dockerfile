@@ -21,8 +21,6 @@ COPY *.sh /minecraft/
 
 WORKDIR /minecraft/
 
-EXPOSE 19132/udp
-
 ENTRYPOINT ["./bedrock-entrypoint.sh", "/minecraft/"]
 
 # create volumes for settings that need to be persisted.
