@@ -44,18 +44,20 @@ function downloadAndUnzip()
     downloadUrl="https://minecraft.azureedge.net/bin-linux/bedrock-server-${version}.zip"
     downloadPath="${MINECRAFT_PATH}/$(basename "$downloadUrl")"
 
-    echo $version
-    echo $unzipPath
-    echo $downloadPath
     echo "Downloading Minecraft Bedrock server version ${VERSION} ..."
     curl $downloadUrl -o $downloadPath
 
     if [[ ! -d $unzipPath ]]; then
         mkdir $unzipPath
+    else
+        pushd $unzipPath
+
+        #remove only binaries to allow for an upgrade of those
+        rm -f bedrock_server *.so
     fi
 
     if [[ -e $downloadPath ]]; then
-        unzip $downloadPath -d $unzipPath
+        unzip -n -q $downloadPath -d $unzipPath
         rm $downloadPath
     else
         echo "Can't find $downloadPath"
@@ -66,8 +68,14 @@ function copyConfigFile()
 {
     filename=$1
 
-    mv ./$filename ./config
-    ln -s ./config/$filename ./$filename
+    # if the file exists in the config folder then copy the config
+    if [ -e ./config/$filename ]; then
+        cp ./config/$filename ./$filename
+    
+    # if there is a default config then copy that to both locations
+    else
+        cp ./$filename ./config/$filename
+    fi
 }
 
 function backupWorlds()

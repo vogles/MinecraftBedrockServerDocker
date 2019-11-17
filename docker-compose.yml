@@ -2,12 +2,13 @@ version: '3.4'
 
 services:
   bds:
-    image: vogles/MinecraftBedrockServerDocker
+    image: vogles/minecraft-bedrock-server
     environment:
       EULA: "true"
       VERSION: "latest"
     ports:
       - 19132:19132/udp
     volumes:
+      - ./bds/backups:/minecraft/server/backups
       - ./bds/config:/minecraft/server/config
       - ./bds/worlds:/minecraft/server/worlds
