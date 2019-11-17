@@ -21,6 +21,9 @@ COPY *.sh /minecraft/
 
 WORKDIR /minecraft/
 
+EXPOSE 19132
+EXPOSE 19133
+
 ENTRYPOINT ["./bedrock-entrypoint.sh", "/minecraft/"]
 
 # create volumes for settings that need to be persisted.
