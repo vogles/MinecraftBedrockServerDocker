@@ -21,8 +21,7 @@ COPY *.sh /minecraft/
 
 WORKDIR /minecraft/
 
-EXPOSE 19132
-EXPOSE 19133
+EXPOSE 19132/udp
 
 ENTRYPOINT ["./bedrock-entrypoint.sh", "/minecraft/"]
 
