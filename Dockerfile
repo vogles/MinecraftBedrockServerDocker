@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     libcurl4 \
     libssl1.0.0 \
     wget \
+    dos2unix \
     unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -24,6 +25,8 @@ WORKDIR /minecraft/
 
 EXPOSE 19132
 EXPOSE 19133
+
+RUN dos2unix ./bedrock-entrypoint.sh
 
 ENTRYPOINT ["./bedrock-entrypoint.sh", "/minecraft/"]
 

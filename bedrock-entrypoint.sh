@@ -14,7 +14,7 @@ fi
 
 set -e
 
-function getVersion() 
+function getVersion()
 {
     version=$1
 
@@ -94,6 +94,8 @@ MINECRAFT_PATH=$(pwd)
 SERVER_DIR="${MINECRAFT_PATH}/server"
 BACKUPS_DIR="${SERVER_DIR}/backups"
 VERSION=$(getVersion ${VERSION})
+
+echo "Version: ${VERSION}"
 
 if [[! -d $SERVER_DIR ]]; then
     mkdir -p $SERVER_DIR
