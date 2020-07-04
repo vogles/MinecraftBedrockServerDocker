@@ -45,7 +45,8 @@ function downloadAndUnzip()
     downloadPath="${MINECRAFT_PATH}/$(basename "$downloadUrl")"
 
     echo "Downloading Minecraft Bedrock server version ${VERSION} ..."
-    curl $downloadUrl -o $downloadPath
+    wget $downloadUrl -O $downloadPath --progress=bar
+    #curl $downloadUrl -o $downloadPath
 
     if [[ ! -d $unzipPath ]]; then
         mkdir $unzipPath
@@ -94,7 +95,7 @@ SERVER_DIR="${MINECRAFT_PATH}/server"
 BACKUPS_DIR="${SERVER_DIR}/backups"
 VERSION=$(getVersion ${VERSION})
 
-if [! -d $SERVER_DIR ]; then
+if [[! -d $SERVER_DIR ]]; then
     mkdir -p $SERVER_DIR
 fi
 

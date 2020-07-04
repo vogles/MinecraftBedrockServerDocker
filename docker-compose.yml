@@ -7,7 +7,8 @@ services:
       EULA: "true"
       VERSION: "latest"
     ports:
-      - 19132:19132/udp
+      - 19132:19132
+      - 19133:19133
     volumes:
       - ./bds/backups:/minecraft/server/backups
       - ./bds/config:/minecraft/server/config

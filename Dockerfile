@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libcurl4 \
     libssl1.0.0 \
+    wget \
     unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -21,7 +22,8 @@ COPY *.sh /minecraft/
 
 WORKDIR /minecraft/
 
-EXPOSE 19132/udp
+EXPOSE 19132
+EXPOSE 19133
 
 ENTRYPOINT ["./bedrock-entrypoint.sh", "/minecraft/"]
 
