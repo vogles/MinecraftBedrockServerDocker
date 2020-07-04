@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $EULA != "true" ]]; then
+if [ $EULA != "true" ]; then
 
     echo
     echo "EULA must be set to true to indicate agreement with the Minecraft End User License"
@@ -18,7 +18,7 @@ function getVersion()
 {
     version=$1
 
-    if [[ -z $version ]]; then
+    if [ -z $version ]; then
         version=latest
     fi
 
@@ -48,7 +48,7 @@ function downloadAndUnzip()
     wget $downloadUrl -O $downloadPath --progress=bar
     #curl $downloadUrl -o $downloadPath
 
-    if [[ ! -d $unzipPath ]]; then
+    if [ ! -d $unzipPath ]; then
         mkdir $unzipPath
     else
         pushd $unzipPath
@@ -97,7 +97,7 @@ VERSION=$(getVersion ${VERSION})
 
 echo "Version: ${VERSION}"
 
-if [[! -d $SERVER_DIR ]]; then
+if [ ! -d $SERVER_DIR  ]; then
     mkdir -p $SERVER_DIR
 fi
 
@@ -106,7 +106,7 @@ backupWorlds $BACKUPS_DIR
 downloadAndUnzip $VERSION ${SERVER_DIR}
 
 
-if [[ ! -d ./config ]]; then
+if [ ! -d ./config ]; then
     mkdir ./config
 fi
 
