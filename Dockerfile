@@ -28,7 +28,7 @@ EXPOSE 19133
 
 RUN dos2unix ./bedrock-entrypoint.sh
 
-ENTRYPOINT ["./bedrock-entrypoint.sh", "/minecraft/"]
+ENTRYPOINT [ "/bin/bash", "./bedrock-entrypoint.sh", "/minecraft/"]
 
 # create volumes for settings that need to be persisted.
 VOLUME /minecraft/server/worlds /minecraft/server/config /minecraft/server/backups
