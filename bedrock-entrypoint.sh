@@ -27,10 +27,11 @@ function getVersion()
             version=1.12.0.28
             ;;
         *)
-            version=$( \
-                curl -v --silent https://www.minecraft.net/en-us/download/server/bedrock/ 2>&1 | \
-                grep -o 'https://minecraft.azureedge.net/bin-linux/[^"]*' | \
-                sed 's#.*/bedrock-server-##' | sed 's/.zip//')
+            wget https://www.minecraft.net/en-us/download/server/bedrock/ -O ./temp_http.html
+            version=$(grep -o 'https://minecraft.azureedge.net/bin-linux/[^"]*' ./temp_http.html | \
+                      sed 's#.*/bedrock-server-##' | \
+                      sed 's/.zip//')
+            rm ./temp_http.html
     esac
 
     echo $version
