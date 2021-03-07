@@ -10,6 +10,7 @@ services:
       - 19132:19132
       - 19133:19133
     volumes:
+      - ./bds:/minecraft/server
       - ./bds/backups:/minecraft/server/backups
       - ./bds/config:/minecraft/server/config
       - ./bds/worlds:/minecraft/server/worlds
