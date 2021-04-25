@@ -117,5 +117,7 @@ copyConfigFile whitelist.json
 
 export LD_LIBRARY_PATH=.
 
+chmod +x ./bedrock_server
+
 echo "Starting Bedrock server..."
 exec ./bedrock_server
