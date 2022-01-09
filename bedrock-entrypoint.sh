@@ -23,13 +23,16 @@ function getVersion()
     fi
 
     case ${version} in
+        1.18|latest)
+            version=1.18.2.03
+            ;;
         1.16)
             version=1.16.221.01
             ;;
         1.12|previous)
             version=1.12.0.28
             ;;
-        latest)
+        *)
             wget https://www.minecraft.net/en-us/download/server/bedrock/ -O ./temp_http.html
             version=$(grep -o 'https://minecraft.azureedge.net/bin-linux/[^"]*' ./temp_http.html | \
                       sed 's#.*/bedrock-server-##' | \
