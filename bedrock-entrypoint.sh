@@ -23,7 +23,7 @@ function getVersion()
     fi
 
     case ${version} in
-        1.16|latest)
+        1.16)
             version=1.16.221.01
             ;;
         1.12|previous)
